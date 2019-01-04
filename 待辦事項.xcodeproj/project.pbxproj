@@ -60,17 +60,41 @@
 		CF33A6EC21DF6C94003967AD /* DoingIT */ = {
 			isa = PBXGroup;
 			children = (
+				CF33A70821DF861E003967AD /* Model */,
+				CF33A70621DF85F8003967AD /* Controller */,
+				CF33A70721DF860D003967AD /* View */,
 				CF33A6ED21DF6C94003967AD /* AppDelegate.swift */,
-				CF33A6EF21DF6C94003967AD /* TableViewController.swift */,
 				CF33A6F121DF6C94003967AD /* Main.storyboard */,
 				CF33A6F721DF6C96003967AD /* Assets.xcassets */,
 				CF33A6F921DF6C96003967AD /* LaunchScreen.storyboard */,
 				CF33A6FC21DF6C96003967AD /* Info.plist */,
-				CF33A6F421DF6C94003967AD /* DoingIT.xcdatamodeld */,
-				CF33A70221DF6ECE003967AD /* TableViewCell.swift */,
-				CF33A70421DF710E003967AD /* Items.swift */,
 			);
 			path = DoingIT;
+			sourceTree = "<group>";
+		};
+		CF33A70621DF85F8003967AD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CF33A6EF21DF6C94003967AD /* TableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CF33A70721DF860D003967AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF33A70221DF6ECE003967AD /* TableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF33A70821DF861E003967AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CF33A70421DF710E003967AD /* Items.swift */,
+				CF33A6F421DF6C94003967AD /* DoingIT.xcdatamodeld */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
