@@ -11,7 +11,7 @@ import UIKit
 class TableViewController: UITableViewController{
 
     //Temperary array
-    let things : [Items] = [Items(itemName: "Writting",check : false), Items(itemName: "Playing",check : false), Items(itemName: "Shopping",check : false)]
+    var things : [Items] = [Items(itemName: "Writting",check : false), Items(itemName: "Playing",check : false), Items(itemName: "Shopping",check : false)]
     let cellId = "cellId"
     
     override func viewDidLoad() {
@@ -23,7 +23,23 @@ class TableViewController: UITableViewController{
     }
 
     @objc func handleAdd(){
-        print("add pressed")
+        var textInput = UITextField()
+        let alert = UIAlertController(title: "新事項", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "請輸入新事項"
+            textInput = textField
+        }
+        
+        let action = UIAlertAction(title: "加入", style: .default) { (action) in
+            guard let text = textInput.text else {return}
+            self.things.append(Items(itemName: text, check: false))
+            print(text)
+            self.tableView.reloadData()
+            print(self.things.count)
+        }
+        
+        alert.addAction(action)
+        present(alert, animated:  true)
     }
 
 }
