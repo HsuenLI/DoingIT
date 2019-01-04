@@ -8,22 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		CF33A6EE21DF6C94003967AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF33A6ED21DF6C94003967AD /* AppDelegate.swift */; };
-		CF33A6F021DF6C94003967AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF33A6EF21DF6C94003967AD /* ViewController.swift */; };
+		CF33A6F021DF6C94003967AD /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF33A6EF21DF6C94003967AD /* TableViewController.swift */; };
 		CF33A6F321DF6C94003967AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF33A6F121DF6C94003967AD /* Main.storyboard */; };
 		CF33A6F621DF6C94003967AD /* DoingIT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF33A6F421DF6C94003967AD /* DoingIT.xcdatamodeld */; };
 		CF33A6F821DF6C96003967AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF33A6F721DF6C96003967AD /* Assets.xcassets */; };
 		CF33A6FB21DF6C96003967AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF33A6F921DF6C96003967AD /* LaunchScreen.storyboard */; };
+		CF33A70321DF6ECE003967AD /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF33A70221DF6ECE003967AD /* TableViewCell.swift */; };
+		CF33A70521DF710E003967AD /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF33A70421DF710E003967AD /* Items.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CF33A6EA21DF6C94003967AD /* DoingIT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoingIT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF33A6EA21DF6C94003967AD /* 待辦事項.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "待辦事項.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF33A6ED21DF6C94003967AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CF33A6EF21DF6C94003967AD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CF33A6EF21DF6C94003967AD /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		CF33A6F221DF6C94003967AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CF33A6F521DF6C94003967AD /* DoingIT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DoingIT.xcdatamodel; sourceTree = "<group>"; };
 		CF33A6F721DF6C96003967AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF33A6FA21DF6C96003967AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF33A6FC21DF6C96003967AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF33A70221DF6ECE003967AD /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		CF33A70421DF710E003967AD /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +52,7 @@
 		CF33A6EB21DF6C94003967AD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CF33A6EA21DF6C94003967AD /* DoingIT.app */,
+				CF33A6EA21DF6C94003967AD /* 待辦事項.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,12 +61,14 @@
 			isa = PBXGroup;
 			children = (
 				CF33A6ED21DF6C94003967AD /* AppDelegate.swift */,
-				CF33A6EF21DF6C94003967AD /* ViewController.swift */,
+				CF33A6EF21DF6C94003967AD /* TableViewController.swift */,
 				CF33A6F121DF6C94003967AD /* Main.storyboard */,
 				CF33A6F721DF6C96003967AD /* Assets.xcassets */,
 				CF33A6F921DF6C96003967AD /* LaunchScreen.storyboard */,
 				CF33A6FC21DF6C96003967AD /* Info.plist */,
 				CF33A6F421DF6C94003967AD /* DoingIT.xcdatamodeld */,
+				CF33A70221DF6ECE003967AD /* TableViewCell.swift */,
+				CF33A70421DF710E003967AD /* Items.swift */,
 			);
 			path = DoingIT;
 			sourceTree = "<group>";
@@ -70,9 +76,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CF33A6E921DF6C94003967AD /* DoingIT */ = {
+		CF33A6E921DF6C94003967AD /* 待辦事項 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CF33A6FF21DF6C96003967AD /* Build configuration list for PBXNativeTarget "DoingIT" */;
+			buildConfigurationList = CF33A6FF21DF6C96003967AD /* Build configuration list for PBXNativeTarget "待辦事項" */;
 			buildPhases = (
 				CF33A6E621DF6C94003967AD /* Sources */,
 				CF33A6E721DF6C94003967AD /* Frameworks */,
@@ -82,9 +88,9 @@
 			);
 			dependencies = (
 			);
-			name = DoingIT;
+			name = "待辦事項";
 			productName = DoingIT;
-			productReference = CF33A6EA21DF6C94003967AD /* DoingIT.app */;
+			productReference = CF33A6EA21DF6C94003967AD /* 待辦事項.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +108,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CF33A6E521DF6C94003967AD /* Build configuration list for PBXProject "DoingIT" */;
+			buildConfigurationList = CF33A6E521DF6C94003967AD /* Build configuration list for PBXProject "待辦事項" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +121,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CF33A6E921DF6C94003967AD /* DoingIT */,
+				CF33A6E921DF6C94003967AD /* 待辦事項 */,
 			);
 		};
 /* End PBXProject section */
@@ -138,7 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF33A6F021DF6C94003967AD /* ViewController.swift in Sources */,
+				CF33A70521DF710E003967AD /* Items.swift in Sources */,
+				CF33A6F021DF6C94003967AD /* TableViewController.swift in Sources */,
+				CF33A70321DF6ECE003967AD /* TableViewCell.swift in Sources */,
 				CF33A6EE21DF6C94003967AD /* AppDelegate.swift in Sources */,
 				CF33A6F621DF6C94003967AD /* DoingIT.xcdatamodeld in Sources */,
 			);
@@ -319,7 +327,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CF33A6E521DF6C94003967AD /* Build configuration list for PBXProject "DoingIT" */ = {
+		CF33A6E521DF6C94003967AD /* Build configuration list for PBXProject "待辦事項" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CF33A6FD21DF6C96003967AD /* Debug */,
@@ -328,7 +336,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CF33A6FF21DF6C96003967AD /* Build configuration list for PBXNativeTarget "DoingIT" */ = {
+		CF33A6FF21DF6C96003967AD /* Build configuration list for PBXNativeTarget "待辦事項" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CF33A70021DF6C96003967AD /* Debug */,
