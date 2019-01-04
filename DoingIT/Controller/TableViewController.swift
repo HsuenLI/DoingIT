@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreData
+
 
 class TableViewController: UITableViewController{
 
@@ -17,6 +19,7 @@ class TableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "等待事項"
+        navigationController?.navigationBar.tintColor = UIColor.darkGray
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAdd))
         tableView.rowHeight = 60
         tableView.register(TableViewCell.self, forCellReuseIdentifier: cellId)
@@ -33,9 +36,7 @@ class TableViewController: UITableViewController{
         let action = UIAlertAction(title: "加入", style: .default) { (action) in
             guard let text = textInput.text else {return}
             self.things.append(Items(itemName: text, check: false))
-            print(text)
             self.tableView.reloadData()
-            print(self.things.count)
         }
         
         alert.addAction(action)
@@ -59,8 +60,8 @@ extension TableViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let cell = tableView.cellForRow(at: indexPath) as! TableViewCell
-        guard let check = cell.item?.check else {return}
-        cell.item?.check = check ? false : true
+        
+        things[indexPath.row].check = things[indexPath.row].check ? false : true
+        tableView.reloadData()
     }
 }
