@@ -31,6 +31,8 @@ class TableViewController: UITableViewController{
         //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         tableView.rowHeight = 60
         tableView.register(TableViewCell.self, forCellReuseIdentifier: cellId)
+        
+        loadItem()
     }
 
     @objc func handleAdd(){
@@ -65,6 +67,16 @@ class TableViewController: UITableViewController{
         tableView.reloadData()
     }
 
+    func loadItem(){
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        
+        do{
+            items = try self.context.fetch(request)
+        }catch{
+            print("Failed to fetch data from core data:", error)
+        }
+    }
+    
 }
 
 //MARK: TableView Data source and delegate
