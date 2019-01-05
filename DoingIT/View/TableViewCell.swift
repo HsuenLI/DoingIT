@@ -11,11 +11,10 @@ import UIKit
 class TableViewCell: UITableViewCell {
     
     //Outlets
-    var item : Items?{
+    var item : Item?{
         didSet{
             listLabel.text = item?.itemName
-            guard let check = item?.check else {return}
-            tickImageView.isHidden = check ? false : true
+            tickImageView.isHidden = (item?.check)! ? false : true
         }
     }
     
