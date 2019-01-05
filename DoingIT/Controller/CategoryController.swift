@@ -43,14 +43,23 @@ class CategoryController : UITableViewController {
             inputTextField = textfield
         }
         
-        let action = UIAlertAction(title: "加入", style: .default) { (action) in
-            let category = CategoryItem(context: self.context)
-            category.title = inputTextField.text
-            self.categories.append(category)
-            self.tableView.saveItem()
+        let addAction = UIAlertAction(title: "加入", style: .default) { (action) in
+            if inputTextField.text?.count == 0{
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                let category = CategoryItem(context: self.context)
+                category.title = inputTextField.text
+                self.categories.append(category)
+                self.tableView.saveItem()
+            }
+
         }
         
-        alert.addAction(action)
+        let deleteAction = UIAlertAction(title: "取消", style: .destructive, handler: nil)
+        
+        
+        alert.addAction(addAction)
+        alert.addAction(deleteAction)
         present(alert, animated: true)
     }
     

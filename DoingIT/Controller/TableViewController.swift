@@ -51,7 +51,7 @@ class TableViewController: UITableViewController, UISearchBarDelegate{
         //print core data file place
         //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         tableView.backgroundColor = .white
-        tableView.rowHeight = 60
+        tableView.rowHeight = 50
         tableView.register(TableViewCell.self, forCellReuseIdentifier: cellId)
         setupSearchBar()
     }
@@ -64,18 +64,25 @@ class TableViewController: UITableViewController, UISearchBarDelegate{
             textInput = textField
         }
         
-        let action = UIAlertAction(title: "加入", style: .default) { (action) in
+        let addAction = UIAlertAction(title: "加入", style: .default) { (action) in
             
-            let item = Item(context: self.context)
-            guard let text = textInput.text else {return}
-            item.itemName = text
-            item.check = false
-            item.parentCategory = self.selectedCategory
-            self.items.append(item)
-            self.tableView.saveItem()
+            if textInput.text?.count == 0{
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                let item = Item(context: self.context)
+                guard let text = textInput.text else {return}
+                item.itemName = text
+                item.check = false
+                item.parentCategory = self.selectedCategory
+                self.items.append(item)
+                self.tableView.saveItem()
+            }
         }
         
-        alert.addAction(action)
+        let deleteAction = UIAlertAction(title: "取消", style: .destructive, handler: nil)
+        
+        alert.addAction(addAction)
+        alert.addAction(deleteAction)
         present(alert, animated:  true)
     }
     

@@ -21,7 +21,7 @@ class TableViewCell: UITableViewCell {
     let listLabel : UILabel = {
         let label = UILabel()
         label.textColor = UIColor.darkGray
-        label.font = .systemFont(ofSize: 14)
+        label.font = .systemFont(ofSize: 18)
         return label
     }()
     
