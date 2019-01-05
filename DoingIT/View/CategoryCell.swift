@@ -11,6 +11,13 @@ import UIKit
 class CategoryCell : UITableViewCell {
     
     //Outlets
+    
+    var category : CategoryItem?{
+        didSet{
+            title.text = category?.title
+        }
+    }
+    
     let title : UILabel = {
         let label = UILabel()
         label.text = "Title Name"

@@ -2,7 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CategoryItem" representedClassName="CategoryItem" syncable="YES" codeGenerationType="class">
         <attribute name="title" attributeType="String" syncable="YES"/>
-        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="parentCategory" inverseEntity="Item" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Item" inverseName="parentCategory" inverseEntity="Item" syncable="YES"/>
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="check" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -10,7 +10,7 @@
         <relationship name="parentCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryItem" inverseName="items" inverseEntity="CategoryItem" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Item" positionX="-75472.84375" positionY="73.0625" width="128" height="88"/>
-        <element name="CategoryItem" positionX="-75713.58984375" positionY="64.5625" width="128" height="73"/>
+        <element name="CategoryItem" positionX="-75712.0078125" positionY="64.2421875" width="128" height="75"/>
+        <element name="Item" positionX="-75481.05078125" positionY="95.51171875" width="128" height="90"/>
     </elements>
 </model>

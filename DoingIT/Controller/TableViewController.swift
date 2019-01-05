@@ -16,7 +16,11 @@ class TableViewController: UITableViewController, UISearchBarDelegate{
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var items = [Item]()
     let cellId = "cellId"
-    var filterItems = [Item]()
+    var selectedCategory : CategoryItem?{
+        didSet{
+            loadItem()
+        }
+    }
     
     //Outlets
     lazy var searchBar : UISearchBar = {
@@ -44,13 +48,11 @@ class TableViewController: UITableViewController, UISearchBarDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-    
         //print core data file place
         //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         tableView.backgroundColor = .white
         tableView.rowHeight = 60
         tableView.register(TableViewCell.self, forCellReuseIdentifier: cellId)
-        loadItem()
         setupSearchBar()
     }
 
@@ -68,27 +70,30 @@ class TableViewController: UITableViewController, UISearchBarDelegate{
             guard let text = textInput.text else {return}
             item.itemName = text
             item.check = false
+            item.parentCategory = self.selectedCategory
             self.items.append(item)
-            self.saveItem()
+            self.tableView.saveItem()
         }
         
         alert.addAction(action)
         present(alert, animated:  true)
     }
     
-    //Save function
-    func saveItem(){
-        do{
-            try context.save()
-        }catch{
-            print("Failed to save data into core data:" , error)
-        }
-        tableView.reloadData()
-    }
 
-    func loadItem(request : NSFetchRequest<Item> = Item.fetchRequest()){
+    func loadItem(request : NSFetchRequest<Item> = Item.fetchRequest(), predicate : NSPredicate? = nil){
         //let request : NSFetchRequest<Item> = Item.fetchRequest()
+        guard let selecteCategoryTitle = selectedCategory?.title else {return}
+        let categoryPredicate = NSPredicate(format: "parentCategory.title MATCHES %@", selecteCategoryTitle)
         
+        if let additionalPredicate = predicate{
+            let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, additionalPredicate])
+            
+            request.predicate = compoundPredicate
+            
+        }else{
+            request.predicate = categoryPredicate
+        }
+    
         do{
             items = try self.context.fetch(request)
         }catch{
@@ -102,7 +107,8 @@ class TableViewController: UITableViewController, UISearchBarDelegate{
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completeHandler) in
             self.context.delete(self.items[indexPath.item])
             self.items.remove(at: indexPath.item)
-            self.saveItem()
+            tableView.saveItem()
+            
             completeHandler(true)
         }
         
@@ -129,7 +135,7 @@ extension TableViewController{
         tableView.deselectRow(at: indexPath, animated: true)
         
         items[indexPath.row].check = items[indexPath.row].check ? false : true
-        self.saveItem()
+        tableView.saveItem()
     }
 }
 
@@ -152,7 +158,7 @@ extension TableViewController{
             request.predicate = predicate
             request.sortDescriptors = [NSSortDescriptor(key: "itemName", ascending: true)]
             
-            loadItem(request : request)
+            loadItem(request : request, predicate: predicate)
         }
 
 //        do{
