@@ -76,6 +76,19 @@ class TableViewController: UITableViewController{
             print("Failed to fetch data from core data:", error)
         }
     }
+        
+    //Swipe with delete option
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completeHandler) in
+            self.context.delete(self.items[indexPath.item])
+            self.items.remove(at: indexPath.item)
+            self.saveItem()
+            completeHandler(true)
+        }
+        
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return swipeConfiguration
+    }
     
 }
 
